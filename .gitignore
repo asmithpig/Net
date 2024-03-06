@@ -22,6 +22,9 @@
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
+# MVC
+**/wwwroot/lib
+
 *.suo
 *.user
 .vs/
