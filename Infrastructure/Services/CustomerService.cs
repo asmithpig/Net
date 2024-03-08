@@ -15,7 +15,7 @@ public class CustomerService: ICustomerService
         _customerRepository = customerRepository;
     }
 
-    public async Task<CustomerResponseModel> GetCandidateById(int id)
+    public async Task<CustomerResponseModel> GetCustomerById(int id)
     {
         var result = await _customerRepository.GetById(id);
 
@@ -30,7 +30,7 @@ public class CustomerService: ICustomerService
         };
     }
 
-    public async Task<IEnumerable<CustomerResponseModel>> GetAllCandidates()
+    public async Task<IEnumerable<CustomerResponseModel>> GetAllCustomers()
     {
         var result = await _customerRepository.GetAll();
 

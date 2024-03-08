@@ -1,3 +1,4 @@
+using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using ShippingMVC.Models;
 
@@ -5,19 +6,19 @@ namespace ShippingMVC.Controllers;
 
 public class CustomerController : Controller
 {
-    List<Customer> customers = new List<Customer>();
 
-    public CustomerController()
+    private readonly ICustomerService _customerService;
+
+    public CustomerController(ICustomerService customerService)
     {
-        customers.Add(new Customer() { Id = 1, CustomerName = "May1", Address = "TX", Contact = "may1@amail.com" });
-        customers.Add(new Customer() { Id = 1, CustomerName = "May2", Address = "CA", Contact = "may2@amail.com" });
-        customers.Add(new Customer() { Id = 1, CustomerName = "May3", Address = "NY", Contact = "may3@amail.com" });
-        customers.Add(new Customer() { Id = 1, CustomerName = "May4", Address = "MM", Contact = "may4@amail.com" });
+        _customerService = customerService;
     }
 
     // GET
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var customers = await _customerService.GetAllCustomers();
+        
         return View(customers);
     }
 }

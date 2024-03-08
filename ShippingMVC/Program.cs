@@ -1,4 +1,8 @@
+using ApplicationCore.Contracts.Repositories;
+using ApplicationCore.Contracts.Services;
 using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,9 @@ builder.Services.AddDbContext<EShopDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("EShopDBConnection"));
 });
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 var app = builder.Build();
 

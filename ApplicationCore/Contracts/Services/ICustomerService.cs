@@ -6,9 +6,9 @@ namespace ApplicationCore.Contracts.Services;
 public interface ICustomerService
 {
     
-    Task<CustomerResponseModel> GetCandidateById(int id);
+    Task<CustomerResponseModel> GetCustomerById(int id);
     
-    Task<IEnumerable<CustomerResponseModel>> GetAllCandidates();
+    Task<IEnumerable<CustomerResponseModel>> GetAllCustomers();
     
     Task<int> AddCustomer(CustomerRequestModel model);
     
