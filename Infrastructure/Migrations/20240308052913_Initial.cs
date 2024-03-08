@@ -16,9 +16,11 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Contact = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FirstName = table.Column<string>(type: "varchar(20)", nullable: false),
+                    LastName = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Mobile = table.Column<string>(type: "varchar(10)", nullable: false),
+                    EmailId = table.Column<string>(type: "varchar(70)", nullable: false),
+                    ResumeUrl = table.Column<string>(type: "varchar(200)", nullable: true)
                 },
                 constraints: table =>
                 {

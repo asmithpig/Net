@@ -2,7 +2,8 @@ using ApplicationCore.Entities;
 
 namespace ApplicationCore.Contracts.Repositories;
 
-public interface ICustomerRepository : IRepository<Customer>
+public interface ICustomerRepository
 {
-    Task<IEnumerable<Customer>> GetCustomersByCity();
+    Task<IEnumerable<Customer>> GetCustomersByLocation();
+    
 }
