@@ -43,6 +43,38 @@ public class CustomerController : Controller
     }
     
     [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+
+        var result = await _customerService.GetCustomerById(id);
+        
+        return View(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(CustomerRequestModel model)
+    {
+        try
+        {
+            await _customerService.UpdateCustomer(model);
+
+            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            return View(new CustomerResponseModel()
+            {
+                Id = model.Id,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Mobile = model.Mobile,
+                Email = model.Email,
+                Location = model.Location
+            });
+        }
+    }
+    
+    [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
 

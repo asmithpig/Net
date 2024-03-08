@@ -1,38 +1,39 @@
-@model CustomerRequestModel
+@model CustomerResponseModel
 @{
-    ViewData["Title"] = "Create Customer";
+    ViewData["Title"] = "Edit Customer";
 }
 
-<h1>Create Customer</h1>
+<h1>Edit Customer</h1>
 
 <div class="container">
-    <form asp-controller="Customer" asp-action="Create" method="post">
+    <form asp-controller="Customer" asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id"/>
         <div class="my-5 row col-12">
             <label for="FirstName">First Name</label>
-            <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+            <input asp-for="FirstName" class="form-control" />
             <span asp-validation-for="FirstName"></span>
         </div>
         <div class="my-5 row col-12">
             <label for="LastName">Last Name</label>
-            <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+            <input asp-for="LastName" class="form-control" />
             <span asp-validation-for="LastName"></span>
         </div>
         <div class="my-5 row col-12">
             <label for="Mobile">Mobile</label>
-            <input asp-for="Mobile" class="form-control" placeholder="Mobile" />
+            <input asp-for="Mobile" class="form-control" />
             <span asp-validation-for="Mobile"></span>
         </div>
         <div class="my-5 row col-12">
             <label for="Email">Email</label>
-            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email"></span>
         </div>
         <div class="my-5 row col-12">
             <label for="Location">Location</label>
-            <input asp-for="Location" class="form-control" placeholder="Location" />
+            <input asp-for="Location" class="form-control" />
             <span asp-validation-for="Location"></span>
-        </div>
-        <input type="submit" value="Add Customer" class="btn btn-primary"/>
+            </div>
+        <input type="submit" value="Update Candidate" class="btn btn-primary"/>
         <a href="/customer" class="btn-default btn">Cancel</a>
     </form>
 </div>

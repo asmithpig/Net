@@ -60,7 +60,7 @@ public class CustomerService: ICustomerService
 
     public Task<int> UpdateCustomer(CustomerRequestModel model)
     {
-        return _customerRepository.Insert(new Customer()
+        return _customerRepository.Update(new Customer()
         {
             Id = model.Id,
             FirstName = model.FirstName,
