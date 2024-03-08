@@ -1,0 +1,38 @@
+@model CustomerRequestModel
+@{
+    ViewData["Title"] = "Create Customer";
+}
+
+<h1>Create Customer</h1>
+
+<div class="container">
+    <form asp-controller="Customer" asp-action="Create" method="post">
+        <div class="my-5 row col-12">
+            <label for="FirstName">First Name</label>
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div class="my-5 row col-12">
+            <label for="LastName">Last Name</label>
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div class="my-5 row col-12">
+            <label for="Mobile">Mobile</label>
+            <input asp-for="Mobile" class="form-control" placeholder="Mobile" />
+            <span asp-validation-for="Mobile"></span>
+        </div>
+        <div class="my-5 row col-12">
+            <label for="Email">Email Id</label>
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="my-5 row col-12">
+            <label for="Location">Location</label>
+            <input asp-for="Location" class="form-control" placeholder="Location" />
+            <span asp-validation-for="Location"></span>
+        </div>
+        <input type="submit" value="Add Customer" class="btn btn-primary"/>
+        <a class="btn-dark btn" href="/customer">Cancel</a>
+    </form>
+</div>

@@ -14,6 +14,7 @@ public class CustomerRequestModel
     public string LastName { get; set; }
     
     [Required(ErrorMessage = "Phone Number is required")]
+    [MaxLength(10, ErrorMessage = "The maximum length of Mobile Number is 10")]
     [DataType(DataType.PhoneNumber)]
     public string Mobile { get; set; }
 

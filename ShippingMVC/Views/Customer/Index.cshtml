@@ -1,13 +1,13 @@
 @model IEnumerable<CustomerResponseModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Customers";
 }
 
-<h1>Index</h1>
+<h1>Customer List</h1>
 <div class="page-header">
 <h1>List of Candidates</h1>
 </div>
-@* <a asp-action="Create" asp-controller="Customer">Add New Candidate</a> *@
+<a class="btn btn-primary" asp-action="Create" asp-controller="Customer">Add New Candidate</a>
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
@@ -19,21 +19,19 @@
             <th>Location</th>
             <th colspan="2">Options</th>
         </tr>
-
     </thead>
     <tbody>
-        @{
-            foreach (var m in Model)
-            {
-                <tr>
+        @foreach (var m in Model)
+        {
+            <tr>
                 <td>
-                @m.FirstName
+                    @m.FirstName
                 </td>
                 <td>
-                @m.LastName
+                    @m.LastName
                 </td>
                 <td>
-                @m.Mobile
+                    @m.Mobile
                 </td>
                 <td>
                     @m.Email
@@ -42,13 +40,12 @@
                     @m.Location
                 </td>
                 <td>
-                @* <a asp-action="Edit" asp-controller="Customer" asp-route-id="@m.Id" >Edit</a> *@
+                    @* <a asp-action="Edit" asp-controller="Customer" asp-route-id="@m.Id" >Edit</a> *@
                 </td>
                 <td>
-                @* <a asp-action="Delete" asp-controller="Customer" asp-route-id="@m.Id">Delete</a> *@
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Customer" asp-route-id="@m.Id">Delete</a>
                 </td>
-                </tr>
-            }
+            </tr>
         }
     </tbody>
 </table>

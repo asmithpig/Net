@@ -1,4 +1,6 @@
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Models.Request;
+using ApplicationCore.Models.Response;
 using Microsoft.AspNetCore.Mvc;
 using ShippingMVC.Models;
 
@@ -21,4 +23,40 @@ public class CustomerController : Controller
         
         return View(customers);
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CustomerRequestModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            await _customerService.AddCustomer(model);
+            return RedirectToAction("Index");
+        }
+
+        return View(model);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+
+        var result = await _customerService.GetCustomerById(id);
+        
+        return View(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(CustomerResponseModel model)
+    {
+        await _customerService.DeleteCustomer(model.Id);
+
+        return RedirectToAction("Index");
+    }
+    
 }
