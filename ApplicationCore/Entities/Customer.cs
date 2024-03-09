@@ -17,7 +17,7 @@ public class Customer
     public string LastName { get; set; }
     
     [Required]
-    [Column(TypeName = "varchar(10)")]
+    [Column(TypeName = "varchar(24)")]
     [DataType(DataType.PhoneNumber)]
     public string Mobile { get; set; }
 

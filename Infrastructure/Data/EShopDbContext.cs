@@ -10,4 +10,6 @@ public class EShopDbContext: DbContext
     }
     
     public DbSet<Customer> Customers { get; set; }
+    
+    public DbSet<Shipper> Shippers { get; set; }
 }
