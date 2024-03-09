@@ -53,24 +53,37 @@ public class CustomerController : Controller
     [HttpPost]
     public async Task<IActionResult> Edit(CustomerRequestModel model)
     {
-        try
+        if (ModelState.IsValid)
         {
-            await _customerService.UpdateCustomer(model);
-
-            return RedirectToAction("Index");
-        }
-        catch (Exception ex)
-        {
-            return View(new CustomerResponseModel()
+            try
             {
-                Id = model.Id,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Mobile = model.Mobile,
-                Email = model.Email,
-                Location = model.Location
-            });
+                await _customerService.UpdateCustomer(model);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return View(new CustomerResponseModel()
+                {
+                    Id = model.Id,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Mobile = model.Mobile,
+                    Email = model.Email,
+                    Location = model.Location
+                });
+            }
         }
+        
+        return View(new CustomerResponseModel()
+        {
+            Id = model.Id,
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            Mobile = model.Mobile,
+            Email = model.Email,
+            Location = model.Location
+        });
     }
     
     [HttpGet]

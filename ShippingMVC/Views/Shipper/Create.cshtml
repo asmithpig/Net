@@ -1,0 +1,23 @@
+@model ShipperRequestModel
+@{
+    ViewData["Title"] = "Create Shipper";
+}
+
+<h1>Create Shipper</h1>
+
+<div class="container">
+    <form asp-controller="Shipper" asp-action="Create" method="post">
+        <div class="my-5 row col-12">
+            <label for="CompanyName">Company Name</label>
+            <input asp-for="CompanyName" class="form-control" placeholder="Company Name" />
+            <span asp-validation-for="CompanyName" class="text-danger"></span>
+        </div>
+        <div class="my-5 row col-12">
+            <label for="Mobile">Mobile</label>
+            <input asp-for="Mobile" class="form-control" placeholder="Mobile" />
+            <span asp-validation-for="Mobile" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Add Shipper" class="btn btn-primary"/>
+        <a href="/shipper" class="btn-default btn">Cancel</a>
+    </form>
+</div>

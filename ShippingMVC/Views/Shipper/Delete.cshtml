@@ -1,0 +1,17 @@
+@model ShipperResponseModel
+@{
+    ViewData["Title"] = "Delete Shipper";
+}
+
+<h1>Delete Shipper</h1>
+
+<div class="container">
+    <form asp-action="Delete" asp-controller="Shipper" method="post">
+        <div class="row">
+            <label asp-for="CompanyName"></label>
+            <span>@Model.CompanyName</span>
+        </div>
+        <input type="submit" value="Delete" class="btn btn-danger"/>
+        <a href="/shipper" class="btn-default btn">Cancel</a>
+    </form>
+</div>
