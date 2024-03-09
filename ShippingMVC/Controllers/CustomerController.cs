@@ -2,7 +2,6 @@ using ApplicationCore.Contracts.Services;
 using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
 using Microsoft.AspNetCore.Mvc;
-using ShippingMVC.Models;
 
 namespace ShippingMVC.Controllers;
 

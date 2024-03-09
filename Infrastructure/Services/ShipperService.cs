@@ -2,16 +2,16 @@ using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
-using Infrastructure.Repositories;
+using ApplicationCore.Contracts.Repositories;
 
 namespace Infrastructure.Services;
 
 public class ShipperService: IShipperService
 {
 
-    private readonly ShipperRepository _shipperRepository;
+    private readonly IShipperRepository _shipperRepository;
 
-    public ShipperService(ShipperRepository shipperRepository)
+    public ShipperService(IShipperRepository shipperRepository)
     {
         _shipperRepository = shipperRepository;
     }
