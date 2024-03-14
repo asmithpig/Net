@@ -8,16 +8,16 @@ namespace ShippingMVC.Controllers;
 public class ShipperController : Controller
 {
 
-    private readonly IShipperService _shipperService;
+    private readonly IShipperServiceAsync _shipperServiceAsync;
 
-    public ShipperController(IShipperService shipperService)
+    public ShipperController(IShipperServiceAsync shipperServiceAsync)
     {
-        _shipperService = shipperService;
+        _shipperServiceAsync = shipperServiceAsync;
     }
 
     public async Task<IActionResult> Index()
     {
-        var result = await _shipperService.GetAllShippers();
+        var result = await _shipperServiceAsync.GetAllShippersAsync();
 
         return View(result);
     }
@@ -33,7 +33,7 @@ public class ShipperController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _shipperService.AddShipper(model);
+            await _shipperServiceAsync.AddShipperAsync(model);
 
             return RedirectToAction("Index");
         }
@@ -45,7 +45,7 @@ public class ShipperController : Controller
     public async Task<IActionResult> Edit(int id)
     {
 
-        var result = await _shipperService.GetShipperById(id);
+        var result = await _shipperServiceAsync.GetShipperByIdAsync(id);
         
         return View(result);
     }
@@ -57,7 +57,7 @@ public class ShipperController : Controller
         {
             try
             {
-                await _shipperService.UpdateShipper(model);
+                await _shipperServiceAsync.UpdateShipperAsync(model);
 
                 return RedirectToAction("Index");
             }
@@ -84,7 +84,7 @@ public class ShipperController : Controller
     public async Task<IActionResult> Delete(int id)
     {
 
-        var result = await _shipperService.GetShipperById(id);
+        var result = await _shipperServiceAsync.GetShipperByIdAsync(id);
         
         return View(result);
     }
@@ -92,7 +92,7 @@ public class ShipperController : Controller
     [HttpPost]
     public async Task<IActionResult> Delete(ShipperRequestModel model)
     {
-        await _shipperService.DeleteShipper(model.Id);
+        await _shipperServiceAsync.DeleteShipperAsync(model.Id);
 
         return RedirectToAction("Index");
     }

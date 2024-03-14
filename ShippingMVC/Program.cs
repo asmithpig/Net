@@ -15,11 +15,11 @@ builder.Services.AddDbContext<EShopDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("EShopDBConnection"));
 });
 
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepositoryAsyncAsync, CustomerRepositoryAsyncAsync>();
+builder.Services.AddScoped<ICustomerServiceAsync, CustomerServiceAsync>();
 
-builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
-builder.Services.AddScoped<IShipperService, ShipperService>();
+builder.Services.AddScoped<IShipperRepositoryAsync, ShipperRepositoryAsync>();
+builder.Services.AddScoped<IShipperServiceAsync, ShipperServiceAsync>();
 
 var app = builder.Build();
 

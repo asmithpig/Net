@@ -8,17 +8,17 @@ namespace ShippingMVC.Controllers;
 public class CustomerController : Controller
 {
 
-    private readonly ICustomerService _customerService;
+    private readonly ICustomerServiceAsync _customerServiceAsync;
 
-    public CustomerController(ICustomerService customerService)
+    public CustomerController(ICustomerServiceAsync customerServiceAsync)
     {
-        _customerService = customerService;
+        _customerServiceAsync = customerServiceAsync;
     }
 
     // GET
     public async Task<IActionResult> Index()
     {
-        var customers = await _customerService.GetAllCustomers();
+        var customers = await _customerServiceAsync.GetAllCustomersAsync();
         
         return View(customers);
     }
@@ -34,7 +34,7 @@ public class CustomerController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _customerService.AddCustomer(model);
+            await _customerServiceAsync.AddCustomerAsync(model);
             return RedirectToAction("Index");
         }
 
@@ -45,7 +45,7 @@ public class CustomerController : Controller
     public async Task<IActionResult> Edit(int id)
     {
 
-        var result = await _customerService.GetCustomerById(id);
+        var result = await _customerServiceAsync.GetCustomerByIdAsync(id);
         
         return View(result);
     }
@@ -57,7 +57,7 @@ public class CustomerController : Controller
         {
             try
             {
-                await _customerService.UpdateCustomer(model);
+                await _customerServiceAsync.UpdateCustomerAsync(model);
 
                 return RedirectToAction("Index");
             }
@@ -90,7 +90,7 @@ public class CustomerController : Controller
     public async Task<IActionResult> Delete(int id)
     {
 
-        var result = await _customerService.GetCustomerById(id);
+        var result = await _customerServiceAsync.GetCustomerByIdAsync(id);
         
         return View(result);
     }
@@ -98,7 +98,7 @@ public class CustomerController : Controller
     [HttpPost]
     public async Task<IActionResult> Delete(CustomerResponseModel model)
     {
-        await _customerService.DeleteCustomer(model.Id);
+        await _customerServiceAsync.DeleteCustomerAsync(model.Id);
 
         return RedirectToAction("Index");
     }
