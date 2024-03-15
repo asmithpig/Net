@@ -12,4 +12,10 @@ public class EShopDbContext: DbContext
     public DbSet<Customer> Customers { get; set; }
     
     public DbSet<Shipper> Shippers { get; set; }
+    
+    public DbSet<Review> Reviews { get; set; }
+    
+    public DbSet<Product> Products { get; set; }
+    
+    public DbSet<Category> Categories { get; set; }
 }

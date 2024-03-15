@@ -29,4 +29,6 @@ public class Customer
     [Column(TypeName ="varchar(200)")]
     public string Location { get; set; }
     
+    public ICollection<Review> Reviews { get; set; }
+    
 }

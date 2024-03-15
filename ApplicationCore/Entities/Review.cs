@@ -12,9 +12,9 @@ public class Review
     [Range(1,5)]
     public int Rating { get; set; }
     
-    [ForeignKey(nameof(Reviewer))]
-    public int ReviewerId { get; set; }
-    public Customer Reviewer { get; set; }
+    [ForeignKey(nameof(Customer))]
+    public int CustomerId { get; set; }
+    public Customer Customer { get; set; }
     
     [ForeignKey(nameof(Product))]
     public int ProductId { get; set; }
