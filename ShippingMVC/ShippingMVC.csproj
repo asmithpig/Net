@@ -29,13 +29,16 @@
       <Folder Include="Areas\Index\Data\" />
       <Folder Include="Areas\Index\Models\" />
       <Folder Include="Areas\Index\Views\" />
+      <Folder Include="Areas\PagedProducts\Controllers\" />
+      <Folder Include="Areas\PagedProducts\Data\" />
+      <Folder Include="Areas\PagedProducts\Models\" />
+      <Folder Include="Areas\PagedProducts\Views\" />
       <Folder Include="Views\CategoryVariation\" />
       <Folder Include="Views\Category\" />
       <Folder Include="Views\Customer\" />
       <Folder Include="Views\Order\" />
       <Folder Include="Views\Payment\" />
       <Folder Include="Views\ProductVariation\" />
-      <Folder Include="Views\Product\" />
       <Folder Include="Views\Promotion\" />
       <Folder Include="Views\Shipper\" />
       <Folder Include="Views\ShoppingCartItem\" />

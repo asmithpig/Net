@@ -20,4 +20,13 @@ public class ProductController : Controller
         
         return View(result);
     }
+
+    public async Task<IActionResult> Category(string categoryName, int pageSize = 30, int pageNumber = 1)
+    {
+        var pagedProducts = await _productServiceAsync.GetProductsByCategoryAsync(categoryName, pageSize, pageNumber);
+
+        ViewData["categoryName"] = categoryName;
+        
+        return View("PagedProducts", pagedProducts);
+    }
 }

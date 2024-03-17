@@ -1,0 +1,53 @@
+@model PagedResultSetModel<ProductResponseModel>
+@{
+    ViewData["Title"] = "Products by Category";
+}
+
+<h1>Products by Category</h1>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <h4>Category: @ViewData["categoryName"]</h4>
+        <hr />
+        <div class="container-fluid">
+            <div class="row">
+                <!-- loop over the collection of products -->
+                @foreach (var m in Model.PagedData)
+                {
+                    <div class="col-md-3">
+                        <div class="product-box">
+                            <a href="#">
+                                <img src=@m.ImageUrl class="img-responsive" alt="image" />
+                            </a>
+                            <div style="height: 50px"><h1>@m.ProductName</h1></div>
+                            <div class="price">$@m.UnitPrice</div>
+                            <button class="btn btn-primary btn-sm">Add to cart</button>
+                        </div>
+                    </div>
+                }
+                <!-- if products empty then display a message -->
+                @if (Model.PagedData.ToList().Count == 0)
+                {
+                    <div class="alert alert-warning col-md-12" role="alert">No products found.
+                    </div>
+                }
+            </div>
+            <!-- begin footer -->
+            @{
+                var previousDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            }
+            
+            <a class="btn btn-primary @previousDisabled" asp-action="Category" asp-controller="Product" 
+               asp-route-categoryName="@ViewData["categoryName"]" asp-route-pageSize="@Model.PageSize"
+               asp-route-pageNumber="@(Model.PageNumber - 1)">
+                Previous
+            </a>
+            
+            <a class="btn btn-primary @nextDisabled" asp-action="Category"  asp-controller="Product"
+               asp-route-categoryName="@ViewData["categoryName"]" asp-route-pageSize="@Model.PageSize" 
+               asp-route-pageNumber="@(Model.PageNumber + 1)">
+                Next
+            </a>
+        </div>
+    </div>
+</div>
