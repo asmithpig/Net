@@ -1,0 +1,14 @@
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model ProductResponseModel
+
+<div class="product-box">
+    <a href="#">
+        <img src=@Model.ImageUrl class="img-responsive" alt="image" />
+    </a>
+    <div style="height: 50px"><h1>@Model.ProductName</h1></div>
+    <div class="price">$@Model.UnitPrice</div>
+    <button class="btn btn-primary btn-sm">Add to cart</button>
+</div>

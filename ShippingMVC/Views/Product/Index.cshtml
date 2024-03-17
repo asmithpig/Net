@@ -14,14 +14,7 @@
                 @foreach (var m in Model)
                 {
                     <div class="col-md-3">
-                        <div class="product-box">
-                            <a href="#">
-                                <img src=@m.ImageUrl class="img-responsive" alt="image" />
-                            </a>
-                            <div style="height: 50px"><h1>@m.ProductName</h1></div>
-                            <div class="price">$@m.UnitPrice</div>
-                            <button class="btn btn-primary btn-sm">Add to cart</button>
-                        </div>
+                        <partial name="_ProductCard" model="m" />
                     </div>
                 }
                 <!-- if products empty then display a message -->
