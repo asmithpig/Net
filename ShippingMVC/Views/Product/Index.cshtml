@@ -1,7 +1,76 @@
-
+@model IEnumerable<ProductResponseModel>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
 }
 
 <h1>Index</h1>
-
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <h4>Category: </h4>
+        <hr />
+        <div class="container-fluid">
+            <div class="row">
+                <!-- loop over the collection of products -->
+                @foreach (var m in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="product-box">
+                            <a href="#">
+                                <img src=@m.ImageUrl class="img-responsive" />
+                            </a>
+                            <div style="height: 50px"><h1>@m.ProductName</h1></div>
+                            <div class="price">$@m.UnitPrice</div>
+                            <button class="btn btn-primary btn-sm">Add to cart</button>
+                        </div>
+                    </div>
+                }
+                <!-- if products empty then display a message -->
+                @if (Model.ToList().Count == 0)
+                {
+                    <div class="alert alert-warning col-md-12" role="alert">No products found.
+                    </div>
+                }
+            </div>
+            <!-- begin footer -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%;">
+                                <nav aria-label="Page navigation">
+                                  <ul class="pagination">
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                      </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                      <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                                    <option>2</option>
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+        </div>
+    </div>
+</div>

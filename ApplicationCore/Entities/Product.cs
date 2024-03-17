@@ -10,7 +10,7 @@ public class Product
     public int Id { get; set; }
     
     [Required]
-    [Column(TypeName = "varchar(40)")]
+    [Column(TypeName = "varchar(200)")]
     public string ProductName { get; set; }
     
     [Required]
@@ -20,6 +20,8 @@ public class Product
     public int UnitsInStock { get; set; }
     
     public string? Description { get; set; }
+    
+    public string? ImageUrl { get; set; }
     
     [ForeignKey(nameof(Category))]
     public int? CategoryId { get; set; }

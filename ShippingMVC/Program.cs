@@ -21,6 +21,9 @@ builder.Services.AddScoped<ICustomerServiceAsync, CustomerServiceAsync>();
 builder.Services.AddScoped<IShipperRepositoryAsync, ShipperRepositoryAsync>();
 builder.Services.AddScoped<IShipperServiceAsync, ShipperServiceAsync>();
 
+builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
+builder.Services.AddScoped<IProductServiceAsync, ProductServiceAsync>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,12 +1,23 @@
+using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ShippingMVC.Controllers;
 
 public class ProductController : Controller
 {
-    // GET
-    public IActionResult Index()
+
+    private readonly IProductServiceAsync _productServiceAsync;
+
+    public ProductController(IProductServiceAsync productServiceAsync)
     {
-        return View();
+        _productServiceAsync = productServiceAsync;
+    }
+
+    // GET
+    public async Task<IActionResult> Index()
+    {
+        var result = await _productServiceAsync.GetAllProductsAsync();
+        
+        return View(result);
     }
 }
